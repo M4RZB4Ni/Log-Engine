@@ -52,13 +52,103 @@
   <div id="dartdoc-main-content" class="main-content">
       
 <section class="desc markdown">
-  <h1 id="log_engine">log_engine</h1>
-<p>Logger for Flutter Apps</p>
-<h2 id="getting-started">Getting Started</h2>
-<p>For help getting started with Flutter development, view the online
-<a href="https://flutter.dev/">documentation</a>.</p>
-<p>For instructions integrating Flutter modules to your existing applications,
-see the <a href="https://flutter.dev/docs/development/add-to-app">add-to-app documentation</a>.</p>
+  <h1 id="log-engine">Log Engine</h1>
+<p>Log Engine is a flexible and extensible logging module for Dart and Flutter applications. It provides a simple interface for logging messages at various levels and supports multiple output targets such as the console and files.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Log messages at different levels: debug, info, warning, error, fatal.</li>
+<li>Easily switch log output targets (console, file).</li>
+<li>Configure log levels to filter messages.</li>
+<li>Customizable log output implementations.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Add the following dependency to your <code>pubspec.yaml</code> file:</p>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  log_engine:
+    path: path/to/log_engine
+</code></pre>
+<h2 id="usage">Usage</h2>
+<p>Quick Start
+Here's an example of how to use the Log Engine in a Flutter or Dart application</p>
+<pre class="language-dart"><code>mport 'package:log_engine/log_engine.dart';
+
+void main() {
+  final logger = Logger();
+
+  // Set the log output to console
+  logger.setOutput(ConsoleLogOutput());
+
+  // Set the log level to info
+  logger.setLogLevel(LogLevel.info);
+
+  // Log messages
+  logger.logInfo('This is an info message');
+  logger.logError('This is an error message', exception: Exception('Sample exception'));
+
+  // Set the log output to a file
+  logger.setOutput(FileLogOutput('logs/app.log'));
+
+  // Log messages to the file
+  logger.logDebug('This is a debug message');
+}
+</code></pre>
+<p>Log Levels
+The <strong>LogLevel</strong> enum defines the severity of log messages:</p>
+<ul>
+<li>LogLevel.debug</li>
+<li>LogLevel.info</li>
+<li>LogLevel.warning</li>
+<li>LogLevel.error</li>
+<li>LogLevel.fatal</li>
+</ul>
+<p>Set the log level to control which messages are output:</p>
+<pre class="language-dart"><code>logger.setLogLevel(LogLevel.warning);
+</code></pre>
+<p>Log Outputs
+Log Engine supports multiple log outputs. You can implement your own by extending the <strong>LogOutput</strong> abstract class.</p>
+<p>ConsoleLogOutput
+Logs messages to the console:</p>
+<pre class="language-dart"><code>logger.setOutput(ConsoleLogOutput()); 
+</code></pre>
+<p>FileLogOutput
+Logs messages to a file:</p>
+<pre class="language-dart"><code>logger.setOutput(FileLogOutput('logs/app.log'));
+</code></pre>
+<p>Extending Log Engine
+You can create custom log outputs by implementing the <strong>LogOutput</strong> interface:</p>
+<pre class="language-dart"><code>class MyCustomLogOutput implements LogOutput {
+  @override
+  void output(LogLevel level, String message, {Exception? exception, StackTrace? stackTrace}) {
+    // Custom implementation
+  }
+}
+</code></pre>
+<p>Testing
+Log Engine includes a comprehensive set of unit tests. To run the tests, use the following command:</p>
+<pre class="language-dart"><code>flutter test 
+</code></pre>
+<p>or, if you are using Dart only:</p>
+<pre class="language-dart"><code>dart test 
+</code></pre>
+<p>Ensure you have the test package included in your pubspec.yaml under dev_dependencies:</p>
+<pre class="language-dart"><code>dev_dependencies:
+  test: (latest_version)
+</code></pre>
+<p><strong>Project Structure</strong></p>
+<pre class="language-dart"><code>lib/
+  src/
+    console_log_output.dart
+    file_log_output.dart
+    logger.dart
+    logger_interface.dart
+  log_engine.dart
+
+test/
+  logger_interface_test.dart
+  logger_test.dart
+  file_log_output_test.dart
+  console_log_output_test.dart
+</code></pre>
 </section>
 
 
