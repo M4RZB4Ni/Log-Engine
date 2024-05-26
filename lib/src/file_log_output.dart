@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'logger_interface.dart';
+import '../log_engine.dart';
+
 
 /// Log output implementation that writes log messages to a file.
 class FileLogOutput implements LogOutput {
