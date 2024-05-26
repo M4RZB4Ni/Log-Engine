@@ -1,7 +1,7 @@
 import '../log_engine.dart';
 
 /// Abstract class defining logging operations and configurations.
-abstract class ILogger {
+abstract interface class ILogger {
   /// Logs a debug message.
   ///
   /// @param message The debug message to be logged.

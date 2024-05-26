@@ -1,7 +1,7 @@
 import '../log_engine.dart';
 
 /// Abstract class defining methods to output log messages.
-abstract class LogOutput {
+abstract interface class LogOutput {
   /// Outputs a log message with the specified log level.
   ///
   /// @param level The log level of the message.
