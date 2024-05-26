@@ -1,5 +1,5 @@
-import 'console_log_output.dart';
-import 'logger_interface.dart';
+import '../log_engine.dart';
+
 
 /// Logger implementation that logs messages based on a specified log level.
 /// Uses a LogOutput to determine where the log messages are outputted.

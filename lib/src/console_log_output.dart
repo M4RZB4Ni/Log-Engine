@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'logger_interface.dart';
+import '../log_engine.dart';
+
 
 /// Log output implementation that prints log messages to the console.
 class ConsoleLogOutput implements LogOutput {
